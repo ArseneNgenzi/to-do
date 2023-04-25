@@ -1,0 +1,20 @@
+
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 700,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
+/* .test {
+  background-color: rgba(38, 109, 82, .3);
+} */
+
+
+.done-undo-toggle {
+  display: none;
+}
