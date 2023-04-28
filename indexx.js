@@ -1,7 +1,14 @@
 const addTodo = document.querySelector("#add-todo");
 const todoInput = document.querySelector("#input-value");
 const todoParentContainer = document.querySelector("#todo-parent-container");
+const errMsg = document.querySelector('#err-msg')
 
+const showError = () => {
+		errMsg.classList.remove('hidden')
+}
+const hideError = () => {
+	errMsg.classList.add('hidden')
+}
 
 // Show Todos on page function
 const showTodos = () => {
@@ -28,17 +35,26 @@ addTodo.addEventListener("click", () => {
 		localStorage.setItem("todos", JSON.stringify(AllTodos));
 		todoInput.value = "";
 		showTodos();
+	} 
+	else {
+		showError()
+		setTimeout(hideError, 2000)
 	}
 });
 
 todoInput.addEventListener("keydown", (e) => {
-	if (todoInput.value && e.keyCode === 13) {
+	if (e.keyCode === 13 && todoInput.value) {
 		let AllTodos = JSON.parse(localStorage.getItem("todos")) || [];
 		AllTodos.push(todoInput.value);
 		localStorage.setItem("todos", JSON.stringify(AllTodos));
 		todoInput.value = "";
 		showTodos();
+	} 
+	else if(e.keyCode === 13 && !todoInput.value) {
+		showError()
+		setTimeout(hideError, 2000)
 	}
+	
 });
 
 const deleteItem = (word) => {
