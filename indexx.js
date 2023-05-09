@@ -32,7 +32,7 @@ const showTodos = () => {
 		<p>${todo.date}</p>
 		</div>
 		
-	</div>
+	</div> 
 		`;
 	});
 	todoParentContainer.innerHTML = html1;
